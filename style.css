@@ -1,80 +1,200 @@
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    color: #333;
+/* 1) Typography & Base Styles */
+:root {
+    /* 2) Color Palette */
+    --sky-top: #1e3a8a;      /* deep dawn blue */
+    --sky-mid: #f59e0b;      /* warm amber */
+    --sky-low: #fde68a;      /* soft sunrise yellow */
+    --sun: #ffd166;          /* sun glow */
+    --text: #1f2937;         /* slate */
+    --text-on-dark: #ffffff;
+    --accent: #f97316;       /* sunrise orange */
 }
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
+body {
+    font-family: 'Inter', sans-serif; /* Body font */
+    font-size: 18px;
+    line-height: 1.65; /* Comfortable line spacing */
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+    min-height: 100vh; /* Ensure full page height for gradient */
+
+    /* 3) Background */
+    background:
+        radial-gradient(circle at 50% 85%, var(--sun) 0%, rgba(255,209,102,0.0) 45%),
+        linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-low) 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensure background covers the entire viewport */
+}
+
+/* birds overlay (subtle) */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='120' viewBox='0 0 220 120'><path d='M10 60 q15 -15 30 0 M40 60 q15 -15 30 0 M110 45 q15 -15 30 0 M150 55 q15 -15 30 0' stroke='rgba(255,255,255,0.7)' stroke-width='2' fill='none'/></svg>") no-repeat right 10% top 18%;
+    opacity: .35;
+}
+
+/* Optional: if I later add an image at images/sunrise.jpg, layer it softly */
+/* Uncomment to use:
+body {
+  background:
+    linear-gradient(to bottom, rgba(30,58,138,0.65), rgba(245,158,11,0.45), rgba(253,230,138,0.6)),
+    url("images/sunrise.jpg") center/cover no-repeat fixed;
+}
+*/
+
+/* Headings */
+h1, h2 {
+    font-family: 'Playfair Display', serif; /* Headings font */
+    color: var(--text); /* Use text color for headings */
+    line-height: 1.2;
 }
 
 h1 {
-    margin: 0;
+    font-size: 2.8rem; /* Larger for main title */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+h2 {
+    font-size: 2.2rem; /* Larger for section titles */
+    color: var(--accent); /* Accent color for section headings */
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+/* 4) Components - Container */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.25rem;
+}
+
+/* Header Styling */
+header {
+    background: rgba(var(--sky-top), 0.8); /* Use sky-top with transparency */
+    color: var(--text-on-dark);
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem; /* Space below header */
+}
+
+/* Main Content Area */
 main {
-    padding: 20px;
-    max-width: 800px;
-    margin: auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    padding: 2rem;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+    border-radius: 1rem; /* rounded-2xl equivalent */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
 }
 
+/* Section Styling */
 section {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(var(--sky-low), 0.5); /* Subtle border */
 }
 
 section:last-child {
     border-bottom: none;
 }
 
-h2 {
-    color: #333;
+/* Paragraph and Link Styling */
+p {
+    margin-bottom: 1rem;
 }
 
+a {
+    color: var(--accent); /* Use accent color for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--sky-mid); /* Change color on hover */
+    text-decoration: underline;
+}
+
+/* Donate Button Styling */
 #donateButton {
     display: inline-block;
-    background: #28a745;
-    color: #fff;
-    padding: 10px 20px;
+    background: var(--accent); /* Use accent color */
+    color: var(--text-on-dark);
+    padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 9999px; /* Pill-shaped button */
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
     text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    outline: none; /* Remove default outline */
 }
 
 #donateButton:hover {
-    background: #218838;
+    background: var(--sky-mid); /* Darken on hover */
+    transform: translateY(-2px);
 }
 
+#donateButton:focus-visible { /* 5) Accessibility: Focus states */
+    outline: 3px solid var(--sky-mid);
+    outline-offset: 3px;
+}
+
+/* Footer Styling */
 footer {
     text-align: center;
-    padding: 20px;
-    background: #333;
-    color: #fff;
-    margin-top: 20px;
+    padding: 1.5rem;
+    background: var(--sky-top); /* Use sky-top color */
+    color: var(--text-on-dark);
+    margin-top: 3rem;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 600px) {
-    main {
-        padding: 10px;
-        margin-top: 10px;
-    }
+/* 5) Accessibility & Polish */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     h1 {
-        font-size: 1.5rem;
+        font-size: 2.2rem;
     }
     h2 {
-        font-size: 1.3rem;
+        font-size: 1.8rem;
+    }
+    main {
+        margin: 1.5rem auto;
+        padding: 1.5rem;
+    }
+    body {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    #donateButton {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+    .container {
+        padding: 1rem;
     }
 }
