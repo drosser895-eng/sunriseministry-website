@@ -109,6 +109,13 @@ p {
     margin-bottom: 1rem;
 }
 
+.small-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 a {
     color: var(--accent); /* Use accent color for links */
     text-decoration: none;
