@@ -1,4 +1,4 @@
-/* 1) Typography & Base Styles */
+/* General Body and Typography */
 :root {
     /* 2) Color Palette */
     --sky-top: #1e3a8a;      /* deep dawn blue */
@@ -58,6 +58,7 @@ h1, h2 {
 h1 {
     font-size: 2.8rem; /* Larger for main title */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    color: var(--text-on-dark); /* Ensure h1 is white in header */
 }
 
 h2 {
@@ -84,13 +85,33 @@ header {
     margin-bottom: 2rem; /* Space below header */
 }
 
+.tagline {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--text-on-dark);
+}
+
+.header-message {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-on-dark);
+}
+
+header nav {
+    margin-top: 1.5rem;
+}
+
+header nav a {
+    margin: 0 10px;
+}
+
 /* Main Content Area */
 main {
     padding: 2rem;
     margin: 2rem auto;
     background: rgba(255, 255, 255, 0.9); /* White with slight transparency */
     border-radius: 1rem; /* rounded-2xl equivalent */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Soft shadow */
 }
 
 /* Section Styling */
@@ -144,7 +165,7 @@ a:hover {
 }
 
 #donateButton:hover {
-    background: var(--sky-mid); /* Darken on hover */
+    background: var(--sky-mid); /* Slightly darker orange on hover */
     transform: translateY(-2px);
 }
 
@@ -179,6 +200,37 @@ a:hover {
     outline-offset: 3px;
 }
 
+/* List styling for services */
+section#services ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+section#services ul li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 25px;
+}
+
+section#services ul li::before {
+    content: '✨'; /* Sparkle icon */
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.testimonial-placeholder {
+    background: #fff3e0; /* Light orange background */
+    border-left: 4px solid var(--accent);
+    padding: 1rem;
+    margin-top: 2rem;
+    font-style: italic;
+    color: #555;
+    border-radius: 5px;
+}
+
 /* Footer Styling */
 footer {
     text-align: center;
@@ -204,15 +256,22 @@ footer {
     h1 {
         font-size: 2.2rem;
     }
+    .tagline {
+        font-size: 1.2rem;
+    }
     h2 {
         font-size: 1.8rem;
     }
-    main {
-        margin: 1.5rem auto;
-        padding: 1.5rem;
+    h3 {
+        font-size: 1.4rem;
     }
-    body {
-        font-size: 16px;
+    .container {
+        padding: 1rem;
+    }
+    header nav a {
+        margin: 0 5px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -220,14 +279,21 @@ footer {
     h1 {
         font-size: 1.8rem;
     }
+    .tagline {
+        font-size: 1rem;
+    }
     h2 {
         font-size: 1.5rem;
     }
-    #donateButton {
-        font-size: 1rem;
-        padding: 10px 20px;
+    h3 {
+        font-size: 1.2rem;
     }
-    .container {
-        padding: 1rem;
+    .button {
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
+    }
+    header nav a {
+        display: block;
+        margin: 5px auto;
     }
 }
